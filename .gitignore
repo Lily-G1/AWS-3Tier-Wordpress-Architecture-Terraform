@@ -1,0 +1,5 @@
+terraform*
+.terraform*
+/s3-bucket-state/.terraform*
+/s3-bucket-state/terraform*
+!terraform.tfvars
