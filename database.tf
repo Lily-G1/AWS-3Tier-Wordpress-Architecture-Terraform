@@ -21,10 +21,10 @@ resource "aws_db_instance" "wordpress_db" {
   skip_final_snapshot     = true
   backup_retention_period = 7
 
- # Make sure RDS ignores any manual password change
+  # Make sure RDS ignores any manual password change
   lifecycle {
-     ignore_changes = [password]
-   }
+    ignore_changes = [password]
+  }
 }
 
 # Create RDS instance replica

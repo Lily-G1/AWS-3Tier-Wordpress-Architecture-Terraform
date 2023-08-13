@@ -33,10 +33,10 @@ resource "aws_subnet" "public_subnets" {
 
 # Create private subnets for application tier
 resource "aws_subnet" "private_app_subnets" {
-  count                   = length(var.private_app_subnets_cidr)
-  vpc_id                  = aws_vpc.project_vpc.id
-  cidr_block              = var.private_app_subnets_cidr[count.index]
-  availability_zone       = var.az[count.index]
+  count             = length(var.private_app_subnets_cidr)
+  vpc_id            = aws_vpc.project_vpc.id
+  cidr_block        = var.private_app_subnets_cidr[count.index]
+  availability_zone = var.az[count.index]
 
   tags = {
     Name = "private-app-subnet-AZ-${count.index + 1}"
@@ -45,10 +45,10 @@ resource "aws_subnet" "private_app_subnets" {
 
 # Create private subnets for database tier
 resource "aws_subnet" "private_db_subnets" {
-  count                   = length(var.private_db_subnets_cidr)
-  vpc_id                  = aws_vpc.project_vpc.id
-  cidr_block              = var.private_db_subnets_cidr[count.index]
-  availability_zone       = var.az[count.index]
+  count             = length(var.private_db_subnets_cidr)
+  vpc_id            = aws_vpc.project_vpc.id
+  cidr_block        = var.private_db_subnets_cidr[count.index]
+  availability_zone = var.az[count.index]
 
   tags = {
     Name = "private-db-subnet-AZ-${count.index + 1}"
@@ -80,14 +80,14 @@ resource "aws_route_table_association" "public_rt_assoc" {
 
 # Create elastic ip for NAT gateway
 resource "aws_eip" "eip_natgw" {
-#   domain = "vpc"
+  #   domain = "vpc"
 }
 
 # Create NAT gateway & allocate elastic ip
 resource "aws_nat_gateway" "nat_gw" {
   allocation_id = aws_eip.eip_natgw.id
   subnet_id     = element(aws_subnet.public_subnets, 0).id
-  
+
   tags = {
     Name = "NAT-gw"
   }
@@ -101,7 +101,7 @@ resource "aws_route_table" "private_app_rt" {
   vpc_id = aws_vpc.project_vpc.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.nat_gw.id
   }
 
@@ -122,8 +122,8 @@ resource "aws_route_table" "private_db_rt" {
   vpc_id = aws_vpc.project_vpc.id
 
   route {
-    cidr_block = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.nat_gw.id 
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.nat_gw.id
   }
 
   tags = {
