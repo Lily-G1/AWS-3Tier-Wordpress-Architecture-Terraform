@@ -25,7 +25,7 @@ resource "aws_security_group_rule" "jumphost_outbound_rule" {
   cidr_blocks = ["0.0.0.0/0"]
 }
 
-# ----------------------------------------
+# --------------------------------------------------
 
 # Security group for elastic file system
 resource "aws_security_group" "efs_sg" {
