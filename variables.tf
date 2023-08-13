@@ -85,7 +85,7 @@ variable "database_name" {
 # RDS instance username
 variable "database_user" {
   type        = string
-  sensitive   =   true
+  sensitive   = true
   description = "name of RDS instance user"
 }
 
