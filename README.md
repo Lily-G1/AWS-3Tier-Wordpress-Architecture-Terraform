@@ -2,6 +2,7 @@
 This terraform project automates the deployment of a 3-tier architecture in AWS with WordPress installed and configured on webservers. It creates the following resources:  
 Custom VPC with 6 subnets: 2 public and 4 private; Internet & NAT gateways, RDS MySQL databases & webservers in private subnets, security groups, a bastion host & an application load balancer in public subnets, an elastic file system, a Route53 hosted zone and autoscaling groups that create & scale bastion & webserver instances. It also creates an S3 bucket that securely stores terraform's state files.  
 
+![3tierArch drawio](https://github.com/Lily-G1/AWS-3Tier-Wordpress-Architecture-Terraform/assets/104821662/8f0197c4-8c36-4b7f-9d10-6712e393c205)  
 
 - The bastion host & application load balancer sit in the public presentation layer  
 - Webservers reside in the private application layer  
@@ -29,9 +30,9 @@ The entire project's code is seperated into various configuration files to make 
 - `terraform plan`  
 - `terraform apply`  
 - You will be prompted for your sensitive values i.e database password & username at this stage  
-- Creation of resources will take a few minutes. After a successful run, the load balancer's DNS endpoint will be exposed as defined in the *output.tf* file. Copy this URL & paste in your browser with "/wordpress" and you will be redirected to Wordpress registration page:  
+- Creation of resources will take a few minutes. After a successful run, the load balancer's DNS endpoint will be exposed as defined in the *output.tf* file. Copy this URL & paste in your browser with "/wordpress" and you will be redirected to the official Wordpress admin/registration page:  
 
-
+![Apache2 Ubuntu Default Page_ It works - Brave 8_4_2023 6_50_09 PM](https://github.com/Lily-G1/AWS-3Tier-Wordpress-Architecture-Terraform/assets/104821662/5806f4ca-81a0-4ff1-9b4b-e759ee86b148)  
 
 - Route53's name servers will also be exposed. You can add them to your domain provider's site to propagate your domain  
 - Destroy resources: `terraform destroy`  
