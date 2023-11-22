@@ -8,7 +8,7 @@ A custom VPC with 6 subnets: 2 public and 4 private, internet & NAT gateways, RD
 - Wordpress application web servers are located in the private application layer  
 - MySQL database & its standby replica are in the private database layer  
 
-The entire project's code is seperated into various configuration files to make it easier to read, understand & maintain. For a detailed breakdown, check out this *blog post..(link here)* where i describe each .tf configuration file and their respective functions.    
+The entire project's code is seperated into various configuration files to make it easier to read, understand & maintain. For a detailed breakdown, check out this [blogpost](https://liliangaladima.hashnode.dev/terraform-deploying-a-3-tier-wordpress-architecture-on-aws) where i describe each .tf configuration file and their respective functions.  
 
 ## Prerequisites:  
 - AWS CLI configured with your access and secret keys  
@@ -39,7 +39,7 @@ The entire project's code is seperated into various configuration files to make 
 - `cd ..`  
 - `cd s3-bucket-state` and destroy S3 bucket as well  
 
-## Highly Important to Note:  
+## Important to Note:  
 * If you're on the AWS free tier, all resources are free except for the NAT gateway which currently costs about $0.10/hour. Be sure to destroy your resources as soon as possible to avoid incremental charges
 
 * Ideally, two NAT gateways should be created for redundancy; one in each public subnet (See architectural diagram). However, to avoid incurring excess charges, this project deploys just one  
