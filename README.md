@@ -40,7 +40,7 @@ The entire project's code is seperated into various configuration files to make 
 - `cd s3-bucket-state` and destroy S3 bucket as well  
 
 ## Important to Note:  
-* If you're on the AWS free tier, all resources are free except for the NAT gateway which currently costs about $0.10/hour. Be sure to destroy your resources as soon as possible to avoid incremental charges
+* If you're on the AWS free tier, all resources are free except for the NAT gateway which cost about $0.10/hour at the time of creating this project. Be sure to destroy your resources as soon as possible to avoid incremental charges  
 
 * Ideally, two NAT gateways should be created for redundancy; one in each public subnet (See architectural diagram). However, to avoid incurring excess charges, this project deploys just one  
 
